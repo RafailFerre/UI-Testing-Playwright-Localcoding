@@ -1,26 +1,26 @@
 //@ts-check
 const { test, expect } = require('@playwright/test')
+import { signIn } from '../common/sign-in'
 
 test.describe('AUTHENTICATION', () => {
     test.describe('POSITIVE', () => {
+        test.beforeEach(async ({ page }) => {
+            await signIn(page, 'raf-test@gmail.com', '12345')
+            // await page.goto('https://coding.pasv.us/user/login')
+            // await page.locator('#normal_login_email').fill('raf-test@gmail.com')
+            // await page.locator('#normal_login_password').fill('12345')
+            // await page.locator('button[type="submit"]').click()
+        })
+
         test('Sign in with existing valid credentials', async ({ page }) => {
-            await page.goto('https://coding.pasv.us/user/login')
-
-            await page.locator('#normal_login_email').fill('raf-test@gmail.com')
-            await page.locator('#normal_login_password').fill('12345')
-            await page.locator('button[type="submit"]').click()
-
             await expect(page.locator('.ant-avatar-square')).toBeVisible()
         })
     })
     test.describe('NEGATIVE', () => {
+        test.beforeEach(async ({ page }) => {
+            await signIn(page, 'invalid@gmail.com', 'invalid')
+        })
         test('Sign in with invalid credentials', async ({ page }) => {
-            await page.goto('https://coding.pasv.us/user/login')
-            
-            await page.locator('#normal_login_email').fill('invalid@email.com')
-            await page.locator('#normal_login_password').fill('invalid_password')
-            await page.locator('button[type="submit"]').click()
-
             const toast = page.locator('.ant-notification-notice-message')
             await expect(toast).toBeVisible()
             await expect(toast).toHaveText('User login. Fail')
