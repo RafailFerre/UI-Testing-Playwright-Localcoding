@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { before, beforeEach } from 'node:test';
+import { signIn } from '../common/sign-in';
 
-test.describe('COMMON', () => {
+test.describe('NAVIGATION', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('/user/login')
-
-        await page.locator('#normal_login_email').fill('raf-test@gmail.com')
-        await page.locator('#normal_login_password').fill('12345')
-        await page.locator('button[type="submit"]').click()
+        await signIn(page,'raf-test@gmail.com','12345')
+        // await page.goto('/user/login')
+        // await page.locator('#normal_login_email').fill('raf-test@gmail.com')
+        // await page.locator('#normal_login_password').fill('12345')
+        // await page.locator('button[type="submit"]').click()
     })
     test('Navigation - Courses', async ({ page }) => {
         await page.getByTestId('topmenu-Courses').click()
