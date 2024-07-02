@@ -5,7 +5,7 @@ import { signIn } from '../common/sign-in'
 test.describe('AUTHENTICATION', () => {
     test.describe('POSITIVE', () => {
         test.beforeEach(async ({ page }) => {
-            await signIn(page, 'raf-test@gmail.com', '12345')
+            await signIn(page, process.env.EMAIL, process.env.PASSWORD)
             // await page.goto('https://coding.pasv.us/user/login')
             // await page.locator('#normal_login_email').fill('raf-test@gmail.com')
             // await page.locator('#normal_login_password').fill('12345')
@@ -18,7 +18,7 @@ test.describe('AUTHENTICATION', () => {
     })
     test.describe('NEGATIVE', () => {
         test.beforeEach(async ({ page }) => {
-            await signIn(page, 'invalid@gmail.com', 'invalid')
+            await signIn(page, 'invalid@gmail.com', 'invalid_password')
         })
         test('Sign in with invalid credentials', async ({ page }) => {
             const toast = page.locator('.ant-notification-notice-message')

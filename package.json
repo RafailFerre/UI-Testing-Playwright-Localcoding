@@ -6,8 +6,10 @@
   "scripts": {
     "test": "playwright test",
     "test:debug": "playwright test --headed",
+    "test:codegen": "playwright codegen",
     "report": "playwright show-report",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx}'"
+    "format": "npx prettier ./ --write --list-different",
+    "lint": "prettier ./ --check"
   },
   "keywords": [],
   "author": "Rafail Ferre",
@@ -15,6 +17,7 @@
   "devDependencies": {
     "@playwright/test": "^1.45.0",
     "@types/node": "^20.14.8",
+    "dotenv": "^16.4.5",
     "prettier": "^3.3.2"
   }
 }
