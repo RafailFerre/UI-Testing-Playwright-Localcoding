@@ -13,26 +13,26 @@ test.describe('NAVIGATION', () => {
         // await page.locator('#normal_login_password').fill('process.env.PASSWORD')
         // await page.locator('button[type="submit"]').click()
     })
-    test('Navigation - Courses', async ({ page, loginPage }) => {
-        await loginPage.navbar.courses.click()
+    test('Navigation - Courses', async ({ page, profilePage }) => {
+        await profilePage.navbar.courses.click()
         // await page.getByTestId('topmenu-Courses').click()
         await expect(page).toHaveURL('/course')
         await expect(page.getByText('Interactive Courses')).toBeVisible()
     })
-    test('Navigation - Challenges', async ({ page, loginPage }) => {
-        await loginPage.navbar.challenges.click()
+    test('Navigation - Challenges', async ({ page, profilePage }) => {
+        await profilePage.navbar.challenges.click()
         // await page.getByTestId('topmenu-Challenges').click()
         await expect(page).toHaveURL('/challenge?limit=30&page=1')
         await expect(page.getByText('Coding challenges')).toBeVisible()
     })
-    test('Navigation - Interview Questions', async ({ page, loginPage }) => {
-        await loginPage.navbar.interview.click()
+    test('Navigation - Interview Questions', async ({ page, profilePage }) => {
+        await profilePage.navbar.interview.click()
         // await page.getByTestId('topmenu-Interview Questions').click()
         await expect(page).toHaveURL('/flash')
         await expect(page.getByText('Interview practice cards')).toBeVisible()
     })
-    test('Navigation - Diary', async ({ page, loginPage }) => {
-        await loginPage.navbar.diary.click()
+    test('Navigation - Diary', async ({ page, profilePage }) => {
+        await profilePage.navbar.diary.click()
         // await page.getByTestId('topmenu-Diary').click()
         await expect(page).toHaveURL('/diary?page=1')
         await expect(page.getByText('Diary of progress')).toBeVisible()

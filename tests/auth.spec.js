@@ -1,8 +1,8 @@
 // import { test, expect } from '@playwright/test'
 import { test, expect } from '../common/test'
-import { signIn } from '../common/sign-in'
+// import { signIn } from '../common/sign-in'
 
-test.describe('AUTHENTICATION', () => {
+test.describe('AUTHENTICATION & AUTHORIZATION', () => {
     test.describe('POSITIVE', () => {
         test.beforeEach(async ({ page, loginPage }) => {
             await loginPage.open()
@@ -28,7 +28,9 @@ test.describe('AUTHENTICATION', () => {
         })
         test('Sign in with invalid credentials', async ({ page, loginPage }) => {
             await loginPage.logIn('invalid@mail.com', 'invalid_password')
-            
+            // await loginPage.inputEmail.fill('invalid@mail.com')
+            // await loginPage.inputPassword.fill('invalid_password')
+            // await loginPage.buttonSubmit.click()
             await expect(loginPage.toast).toBeVisible()
             await expect(loginPage.toast).toHaveText('User login. Fail')
         })
