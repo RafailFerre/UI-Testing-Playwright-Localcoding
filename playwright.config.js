@@ -28,7 +28,7 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
 
-    headless: false, // Запуск браузера не в режиме "headless"
+    // headless: false, // Запуск браузера не в режиме "headless"
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
