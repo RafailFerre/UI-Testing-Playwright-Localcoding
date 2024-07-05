@@ -6,6 +6,8 @@ export default class BasePage {
 
         this.toast = page.locator('.ant-notification-notice-message')
 
+        this.alert = page.locator('.ant-alert')
+
         this.navbar = new Navbar(page)
 
     }
